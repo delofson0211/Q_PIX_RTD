@@ -2,14 +2,15 @@ INCDIR = $(QpixDir)/include
 LIBDIR = $(QpixDir)/Library
 
 # Compiler flags
-CFLAGS = -std=c++11 -Wall -Wextra -Wno-long-long \
-	-O3 -fno-common -c \
+CXXFLAGS = -std=c++11 -Wall -Wextra -Wno-long-long \
+	-O3 -fno-common  \
 	-I$(INCDIR)
 
 LDFLAGS = -L$(LIBDIR) -lQpix
 
-test: Example01.cc 
-	$(CXX) $(CFLAGS) Example01.cc
-	$(CXX)  -o Example01 Example01.o $(LDFLAGS)
-	rm Example01.o
+test Example01: Example01.cc 
+	$(CXX) Example01.cc -o Example01 $(CXXFLAGS) $(LDFLAGS)
+
+
+
 
