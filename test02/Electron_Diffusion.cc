@@ -20,11 +20,12 @@ int main()
    time_req = clock();
 
 
-   double Wvalue, E_vel, DiffusionL, DiffusionT;
+   double Wvalue, E_vel, DiffusionL, DiffusionT, Lifetime;
    Wvalue     = 23.6; // in eV
    E_vel      = 1.648; //mm/mus
    DiffusionL = 682.23/1e6;  //mm**2/mus
    DiffusionT = 1315.86/1e6; //mm**2/mus
+   Lifetime = 0.0001; //in sec
 
    // here x,y,z are in mm and edep is in MeV
    std::vector<std::vector<double>> RawDataVector2;
@@ -36,7 +37,7 @@ int main()
    eventt2 =  Qpix::GetEventVector(Event ,  EventLengths2,  RawDataVector2);
 
    std::vector<Qpix::HIT> Electron_Event_Vector;
-   Electron_Event_Vector = Qpix::DiffuserTest2( Wvalue, E_vel, DiffusionL, DiffusionT, eventt2);
+   Electron_Event_Vector = Qpix::Diffuser( Wvalue, E_vel, Lifetime, DiffusionL, DiffusionT, eventt2);
 
    std::ofstream rawdata;
    rawdata.open ("Diffused_Electron_Position.txt");

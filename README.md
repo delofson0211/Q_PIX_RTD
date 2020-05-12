@@ -38,7 +38,7 @@ The file it produces can be quite large since it is making an electron cloud and
 ```bash
 cd test02
 make test
-./test
+./Electron_Diffusion
 ```
 
 ### Example01
